@@ -85,14 +85,22 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+if (os.getenv('DATABASE_NAME') == "fit-db"):
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'fit-db'),
-        'USER': os.getenv('DATABASE_USER', 'db-user'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'password'),
+        'NAME': os.getenv('DATABASE_NAME', 'postgres'),
+        'USER': os.getenv('DATABASE_USER', 'admin'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'admin'),
         'HOST': os.getenv('DATABASE_HOST', 'localhost'),
         'PORT': os.getenv('DATABASE_PORT', '5432'),
+    }
+}
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',  # This uses an in-memory SQLite database for tests
     }
 }
 
