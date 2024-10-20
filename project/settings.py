@@ -13,16 +13,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 sentry_sdk.init(
-    dsn=os.environ.get('SENTRY_DSN', ''),
-    integrations=[DjangoIntegration()],
+    dsn=os.getenv("SENTRY_DSN", ""),
     traces_sample_rate=1.0,
-    send_default_pii=True 
+    profiles_sample_rate=1.0,
 )
 
 # Quick-start development settings - unsuitable for production
@@ -31,9 +29,8 @@ sentry_sdk.init(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SECRET_KEY = "MOCK"
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -58,7 +55,6 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'sentry_sdk.integrations.django.middleware.SentryMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,9 +81,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'project.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -145,7 +138,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    f"http://{os.getenv('UI_URL', 'localhost:3000')}",
+    os.getenv('UI_URL', 'http://localhost:3000'),
 ]
 
 APPEND_SLASH=False
