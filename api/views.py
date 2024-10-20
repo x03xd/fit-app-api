@@ -37,7 +37,7 @@ def login(request):
             'access': str(refresh.access_token),
             'email': str(user.email),
             'username': str(user.username),
-            'name': str(user.name),
+            'name': str(user.first_name),
         })
     return Response({"msg": "Invalid credentials."}, status=status.HTTP_401_UNAUTHORIZED)
 
