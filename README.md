@@ -19,3 +19,9 @@ API Fitness to backend stworzony w technologii Django Rest Framework, które obs
 - **Django Rest Framework**: Umożliwia łatwe tworzenie API.
 - **PostgreSQL**: Użyty jako baza danych do przechowywania informacji o użytkownikach oraz planach dietetycznych.
 - **rest_framework_simplejwt**: Umożliwia autoryzację JWT oraz automatyczne odświeżanie tokenów.
+
+## Testy jednostkowe
+
+- **Środowisko testowe**: Używamy `pytest` w połączeniu z `pytest-django`, co pozwala na łatwe testowanie aplikacji Django. Można uruchomić wszystkie testy poleceniem `pytest` w terminalu.
+- **Testowanie funkcji API**: Tworzymy testy dla różnych endpointów, takich jak rejestracja, logowanie, zapisywanie diet, czy walidacja tokenów. Każdy test sprawdza odpowiednią odpowiedź API oraz poprawność danych.
+- **Przykłady testów**: Przykładowe testy obejmują weryfikację statusu HTTP odpowiedzi, sprawdzanie treści odpowiedzi oraz testowanie logiki aplikacji, na przykład poprawności działania kalkulatora kalorii.
