@@ -12,7 +12,8 @@ API Fitness to backend stworzony w technologii Django Rest Framework, które obs
 - **Kalkulator kalorii**: Użytkownicy mogą obliczać swoje dzienne zapotrzebowanie kaloryczne na podstawie wprowadzonych danych, takich jak wiek, płeć, waga i poziom aktywności fizycznej.
 - **Zapis wygenerowanej diety w bazie danych**: Użytkownicy mogą zapisywać swoje plany dietetyczne w bazie danych i uzyskiwać do nich dostęp za pośrednictwem API.
 - **Status endpoint**: Endpoint umożliwiający sprawdzenie stanu serwisu api
-
+- **Sentry**: Aplikacja jest zintegrowana z systemem Sentry, który monitoruje działanie aplikacji oraz zbiera informacje o ewentualnych błędach.
+- 
 ## Technologie
 
 - **Django**: Użyte do stworzenia backendu.
